@@ -1,0 +1,227 @@
+/* Modern Color Variables */
+:root {
+    --primary-bg: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    --clock-bg: #ffffff;
+    --calendar-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --text-color: #333;
+    --hand-hour: #111;
+    --hand-minute: #333;
+    --hand-second: #d63031;
+    --shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    --hand-glow: 0 0 15px rgba(214, 48, 49, 0.7);
+  }
+  
+  .dark {
+    --primary-bg: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    --clock-bg: #2d3436;
+    --calendar-bg: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    --text-color: #f5f6fa;
+    --hand-hour: #eee;
+    --hand-minute: #bbb;
+    --hand-second: #ff7675;
+    --shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    --hand-glow: 0 0 15px rgba(255, 118, 117, 0.8);
+  }
+  
+  /* Base Styles */
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: var(--primary-bg);
+    transition: all 0.5s ease;
+    color: var(--text-color);
+  }
+  
+  .container {
+    text-align: center;
+    padding: 30px;
+  }
+  
+  /* Extra Large Clock Styles */
+  .clock {
+    position: relative;
+    width: 450px; /* Increased from 350px */
+    height: 450px;
+    border-radius: 50%;
+    background: var(--clock-bg);
+    box-shadow: var(--shadow);
+    margin: 0 auto 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease;
+  }
+  
+  /* Number Markers - Scaled Up */
+  .clock label {
+    position: absolute;
+    transform: rotate(calc(30deg * var(--i)));
+    inset: 35px; /* Increased from 25px */
+    text-align: center;
+  }
+  
+  .clock label span {
+    display: inline-block;
+    transform: rotate(calc(-30deg * var(--i)));
+    font-size: 26px; /* Increased from 20px */
+    font-weight: 600;
+    color: var(--text-color);
+  }
+  
+  /* Calendar Display - Proportionally Larger */
+  .calendar-inside {
+    position: absolute;
+    width: 120px; /* Increased from 90px */
+    height: 120px;
+    background: var(--calendar-bg);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    z-index: 10;
+    color: white;
+    border: 4px solid rgba(255, 255, 255, 0.25); /* Thicker border */
+    transition: all 0.5s ease;
+  }
+  
+  .date-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #day {
+    font-size: 15px; /* Slightly larger */
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+    letter-spacing: 1.2px;
+    color: rgba(255, 255, 255, 0.95);
+  }
+  
+  #date {
+    font-size: 34px; /* Increased from 26px */
+    font-weight: bold;
+    line-height: 1;
+    margin: 3px 0;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  .month-year {
+    display: flex;
+    gap: 5px;
+    font-size: 12px; /* Slightly larger */
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+  }
+  
+  /* Clock Hands - Proportionally Larger */
+  .indicator {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .indicator .hand {
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    transform-origin: bottom;
+    border-radius: 6px;
+    transition: transform 0.5s cubic-bezier(0.4, 2.3, 0.3, 1);
+  }
+  
+  .hand.hour {
+    width: 10px; /* Increased from 8px */
+    height: 100px; /* Increased from 80px */
+    background: var(--hand-hour);
+    z-index: 5;
+    box-shadow: 
+      0 0 10px rgba(0, 0, 0, 0.4),
+      0 0 0 3px rgba(255, 255, 255, 0.6); /* Thicker border */
+    transform: translateX(-50%);
+  }
+  
+  .hand.minute {
+    width: 6px; /* Increased from 5px */
+    height: 140px; /* Increased from 110px */
+    background: var(--hand-minute);
+    z-index: 6;
+    box-shadow: 
+      0 0 8px rgba(0, 0, 0, 0.4),
+      0 0 0 3px rgba(255, 255, 255, 0.6);
+    transform: translateX(-50%);
+  }
+  
+  .hand.seconds {
+    width: 4px; /* Increased from 3px */
+    height: 160px; /* Increased from 125px */
+    background: var(--hand-second);
+    z-index: 7;
+    box-shadow: 
+      var(--hand-glow),
+      0 0 0 2px rgba(255, 255, 255, 0.8);
+    transform: translateX(-50%);
+  }
+  
+  /* Center Dot - Larger */
+  .clock::after {
+    content: '';
+    position: absolute;
+    width: 18px; /* Increased from 14px */
+    height: 18px;
+    background: var(--hand-second);
+    border-radius: 50%;
+    z-index: 8;
+    border: 3px solid var(--clock-bg); /* Thicker border */
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+  }
+  
+  /* Mode Toggle Button - Larger */
+  .modebutton {
+    padding: 14px 30px; /* Increased padding */
+    background: var(--calendar-bg);
+    color: white;
+    border: none;
+    border-radius: 35px; /* More rounded */
+    cursor: pointer;
+    font-size: 18px; /* Larger text */
+    font-weight: 600; /* Bolder */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    margin-top: 30px;
+  }
+  
+  .modebutton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  }
+  
+  .mode-icon {
+    font-size: 22px; /* Larger icon */
+  }
+  
+  /* Dark Mode Specific Adjustments */
+  .dark .clock::after {
+    border-color: #333;
+  }
+  
+  .dark .hand.hour {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  }
+  
+  .dark .hand.minute {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  }

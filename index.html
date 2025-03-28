@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Clock & Calendar</title>
+  <link rel="stylesheet" href="merge.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Clock with Integrated Calendar -->
+    <div class="clock">
+      <!-- Clock Numbers (1-12) -->
+      <label style="--i: 1"><span>1</span></label>
+      <label style="--i: 2"><span>2</span></label>
+      <label style="--i: 3"><span>3</span></label>
+      <label style="--i: 4"><span>4</span></label>
+      <label style="--i: 5"><span>5</span></label>
+      <label style="--i: 6"><span>6</span></label>
+      <label style="--i: 7"><span>7</span></label>
+      <label style="--i: 8"><span>8</span></label>
+      <label style="--i: 9"><span>9</span></label>
+      <label style="--i: 10"><span>10</span></label>
+      <label style="--i: 11"><span>11</span></label>
+      <label style="--i: 12"><span>12</span></label>
+
+      <!-- Calendar Display -->
+      <div class="calendar-inside">
+        <div class="date-display">
+          <span id="day">MON</span>
+          <span id="date">01</span>
+        </div>
+        <div class="month-year">
+          <span id="month">JAN</span>
+          <span id="year">2025</span>
+        </div>
+      </div>
+
+      <!-- Clock Hands -->
+      <div class="indicator">
+        <span class="hand hour"></span>
+        <span class="hand minute"></span>
+        <span class="hand seconds"></span>
+      </div>
+    </div>
+
+    <!-- Theme Toggle Button -->
+    <div class="modebutton">
+      <span class="mode-icon">🌙</span>
+      <span class="mode-text">Dark Mode</span>
+    </div>
+  </div>
+
+  <script src="merge.js"></script>
+</body>
+</html>
